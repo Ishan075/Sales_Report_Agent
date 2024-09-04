@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 Usage
 1. Configure Email Settings
-Before running the script, configure the sender's email settings in the send_email_report function inside the generate_report.py file:
+Before running the script, configure the sender's email settings in the send_email_report function inside the sales_report_agent.py file:
 sender_email = "your_email@example.com"
 password = "your_password"
 
@@ -61,7 +61,7 @@ SALES_FILE_PATH = "path_to_your_sales_data.csv"
 
 3. Run the Script
 Run the script to generate and send the sales report:
-python generate_report.py
+python sales_report_agent.py
 
 4. Scheduled Report Sending
 To schedule the report for a specific time, you can integrate the script with a task scheduler like cron (on Linux) or Task Scheduler (on Windows).
