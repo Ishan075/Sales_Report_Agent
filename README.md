@@ -26,7 +26,7 @@ The agent can send the report immediately when asked or schedule the mailing at 
 
 Project Structure:
 
-generate_report.py: Main script that handles data extraction, report generation, and email sending.
+sales_report_agent.py: Main script that handles data extraction, report generation, and email sending.
 
 
 README.md: Documentation file (this file).
