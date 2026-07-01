@@ -1,0 +1,6 @@
+pandas
+matplotlib
+fpdf2
+apscheduler
+python-dateutil
+python-dotenv
