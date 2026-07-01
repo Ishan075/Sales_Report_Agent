@@ -13,21 +13,29 @@ from datetime import datetime, timedelta
 import threading
 
 # -------------------- Configuration -------------------- #
+from dotenv import load_dotenv
+load_dotenv()
 
-# Email Configuration
-EMAIL_ADDRESS = 'phoneyuser33@gmail.com'      # Replace with your email address
-EMAIL_PASSWORD = 'lqeq hdqp ziih ttra'        # Replace with your email password or app-specific password
-SMTP_SERVER = 'smtp.gmail.com'              # Replace with your SMTP server (e.g., 'smtp.gmail.com' for Gmail)
-SMTP_PORT = 587                               # Replace with your SMTP port (e.g., 587 for Gmail)
+# Email Configuration — loaded from .env, never hardcoded
+EMAIL_ADDRESS = os.environ.get('EMAIL_ADDRESS')
+EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+SMTP_SERVER = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
+SMTP_PORT = int(os.environ.get('SMTP_PORT', 587))
 
-# Sales Data Configuration
-SALES_FILE_PATH = "C:\\Users\\91740\Downloads\\sales_data_sample.csv"           
+if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
+    raise EnvironmentError(
+        "Missing EMAIL_ADDRESS or EMAIL_PASSWORD. "
+        "Copy .env.example to .env and fill in your credentials."
+    )
+
+# Sales Data Configuration — relative path, works on any machine/OS
+SALES_FILE_PATH = os.environ.get('SALES_FILE_PATH', 'sales_data_sample.csv')
 
 # Report Configuration
 REPORT_FILE_PATH = 'daily_sales_report.pdf'
 
-# Management Team Emails
-MANAGEMENT_EMAILS = ['phoneyuser33@gmail.com', 'manager2@example.com']  # Replace with actual email addresses
+# Management Team Emails — comma-separated in .env
+MANAGEMENT_EMAILS = os.environ.get('MANAGEMENT_EMAILS', '').split(',')
 
 # ------------------------------------------------------- #
 
