@@ -50,21 +50,37 @@ You can install these dependencies by running:
 pip install -r requirements.txt
 
 Usage
-1. Configure Email Settings
-Before running the script, configure the sender's email settings in the send_email_report function inside the sales_report_agent.py file:
-sender_email = "your_email@example.com"
-password = "your_password"
+1. Install dependencies
+​```bash
+pip install -r requirements.txt
+​```
 
-2. Specify the Sales Data File
-Specify the path to your sales data file in the main function:
-SALES_FILE_PATH = "path_to_your_sales_data.csv"
+2. Configure environment variables
+Copy the example file and fill in your own values — **never commit your actual `.env` file**:
+​```bash
+cp .env.example .env
+​```
 
-3. Run the Script
-Run the script to generate and send the sales report:
+Then edit `.env`:
+​```
+EMAIL_ADDRESS=your_email@gmail.com
+EMAIL_PASSWORD=your_gmail_app_password
+SALES_FILE_PATH=path/to/your/sales_data.csv
+MANAGEMENT_EMAILS=manager1@example.com,manager2@example.com
+​```
+
+> Getting a Gmail App Password: regular Gmail passwords won't work with SMTP. Generate one at [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) (requires 2-Step Verification enabled on your account).
+
+3. Run the agent
+​```bash
 python sales_report_agent.py
+​```
 
-4. Scheduled Report Sending
-To schedule the report for a specific time, you can integrate the script with a task scheduler like cron (on Linux) or Task Scheduler (on Windows).
+Then use natural commands:
+- `send report now`
+- `schedule report in 1 hour`
+- `schedule report at 9 PM`
+- `exit`
 
 Code Explanation
 
